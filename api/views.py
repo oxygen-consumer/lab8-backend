@@ -80,7 +80,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
             )
             data._mutable = False
             request.data = data
-        except:
+        except Exception:
             pass
         return super().create(request, *args, **kwargs)
 
@@ -107,6 +107,6 @@ class TransactionViewSet(viewsets.ModelViewSet):
             )
             data._mutable = False
             request.data = data
-        except:
+        except Exception:
             pass
         return super().update(request)
