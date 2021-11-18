@@ -10,10 +10,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CarSerializer(serializers.ModelSerializer):
-    workmanship_sum = serializers.DecimalField(
-        max_digits=10, decimal_places=2, read_only=True, default=0
-    )
-
     class Meta:
         model = Car
         fields = [
@@ -27,10 +23,6 @@ class CarSerializer(serializers.ModelSerializer):
 
 
 class ClientSerializer(serializers.ModelSerializer):
-    client_discount = serializers.DecimalField(
-        max_digits=10, decimal_places=2, read_only=True, default=0
-    )
-
     class Meta:
         model = Client
         fields = [
@@ -49,12 +41,13 @@ class TransactionSerializer(serializers.ModelSerializer):
         model = Transaction
         fields = [
             "id",
-            "id_car",
-            "id_client",
+            "car",
+            "client",
             "parts_price",
             "workmanship_price",
+            "paid_parts_price",
+            "paid_workmanship_price",
             "time",
             "parts_discount",
             "workmanship_discount",
-            "total_discount",
         ]
