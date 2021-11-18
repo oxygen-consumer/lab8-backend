@@ -57,4 +57,3 @@ class TransactionViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["time"]
-
