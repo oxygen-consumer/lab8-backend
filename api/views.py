@@ -10,6 +10,11 @@ from .serializers import (
 )
 from django.contrib.auth.models import User
 from rest_framework import filters
+from rest_framework.response import Response
+# from random import random, randrange
+import random
+from rest_framework.decorators import action
+from .car_brands import car_brands
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -31,6 +36,23 @@ class CarViewSet(viewsets.ModelViewSet):
         "workmanship_price",
     ]
     ordering = ["-workmanship_price"]
+
+    @action(detail=False, methods=["get", "post"])
+    def generateRandom(self, request):
+        generated = []
+        for x in range(int(request.data["num"])):
+            obj = {
+                "model": random.choice(car_brands),
+                "acquisition_year": random.randrange(1950, 2021),
+                "kilometers": random.randrange(600000),
+            }
+            generated.append(obj)
+            Car.objects.create(
+                model=obj["model"],
+                acquisition_year=obj["acquisition_year"],
+                kilometers=obj["kilometers"]
+            )
+        return Response(generated)
 
 
 class ClientViewSet(viewsets.ModelViewSet):

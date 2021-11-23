@@ -55,11 +55,11 @@ class Client(models.Model):
 
 class Transaction(models.Model):
     car = models.ForeignKey(
-        Car, on_delete=models.PROTECT, related_name="transactions"
+        Car, on_delete=models.CASCADE, related_name="transactions"
     )
     client = models.ForeignKey(
         Client,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
         related_name="transactions",
