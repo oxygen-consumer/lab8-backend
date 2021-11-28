@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
     "api-lab8.herokuapp.com",
     "localhost",
     "lab8-api.azurewebsites.net",
+    "api.zaha.tech",
 ]
 
 
