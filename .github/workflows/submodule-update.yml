@@ -1,3 +1,5 @@
+name: Push to main repo
+
 on: [push]
 
 jobs:
