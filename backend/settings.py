@@ -28,7 +28,12 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "api-lab8.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "api-lab8.herokuapp.com",
+    "localhost",
+    "lab8-api.azurewebsites.net",
+]
 
 
 # Application definition
@@ -126,10 +131,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-]
 
 CORS_ALLOW_ALL_ORIGINS = True  # FIXME
 
