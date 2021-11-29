@@ -6,26 +6,26 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='transaction',
-            old_name='id_car',
-            new_name='car',
+            model_name="transaction",
+            old_name="id_car",
+            new_name="car",
         ),
         migrations.RenameField(
-            model_name='transaction',
-            old_name='id_client',
-            new_name='client',
+            model_name="transaction",
+            old_name="id_client",
+            new_name="client",
         ),
         migrations.RemoveField(
-            model_name='transaction',
-            name='parts_discount',
+            model_name="transaction",
+            name="parts_discount",
         ),
         migrations.RemoveField(
-            model_name='transaction',
-            name='workmanship_discount',
+            model_name="transaction",
+            name="workmanship_discount",
         ),
     ]

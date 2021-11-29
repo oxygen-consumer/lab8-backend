@@ -10,11 +10,10 @@ from .serializers import (
 )
 from django.contrib.auth.models import User
 from rest_framework import filters
-from rest_framework.response import Response
-# from random import random, randrange
 import random
 from rest_framework.decorators import action
 from .car_brands import car_brands
+from rest_framework.response import Response
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,9 +22,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class CarViewSet(viewsets.ModelViewSet):
-    queryset = Car.objects.all().annotate(
-        workmanship_price=Sum("transactions__workmanship_price")
-    )
+    queryset = Car.objects.all()
     serializer_class = CarSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = [
@@ -33,9 +30,8 @@ class CarViewSet(viewsets.ModelViewSet):
         "model",
         "acquisition_year",
         "kilometers",
-        "workmanship_price",
+        "workmanship_sum",
     ]
-    ordering = ["-workmanship_price"]
 
     @action(detail=False, methods=["get", "post"])
     def generateRandom(self, request):
@@ -50,15 +46,12 @@ class CarViewSet(viewsets.ModelViewSet):
             Car.objects.create(
                 model=obj["model"],
                 acquisition_year=obj["acquisition_year"],
-                kilometers=obj["kilometers"]
+                kilometers=obj["kilometers"],
             )
-        return Response(generated)
+        return Response()
 
 
 class ClientViewSet(viewsets.ModelViewSet):
-    # queryset = Client.objects.all().annotate(
-    #     client_discount=Sum("transactions__workmanship_discount")
-    # )
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
@@ -71,7 +64,6 @@ class ClientViewSet(viewsets.ModelViewSet):
         "join_date",
         "client_discount",
     ]
-    # ordering = ["-client_discount"]
 
 
 class TransactionViewSet(viewsets.ModelViewSet):
