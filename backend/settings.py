@@ -30,9 +30,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "api-lab8.herokuapp.com",
     "localhost",
-    "lab8-api.azurewebsites.net",
+    "service-auto-api.azurewebsites.net",
     "api.zaha.tech",
 ]
 
