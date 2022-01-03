@@ -97,3 +97,7 @@ class Transaction(models.Model):
     @property
     def total_price(self) -> float:
         return self.paid_parts_price + self.paid_workmanship_price
+
+    @property
+    def total_discount(self) -> float:
+        return self.workmanship_discount + self.parts_discount
